@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.ShadowJavaPlugin.Companion.shadowJar
+
 plugins {
     kotlin("jvm") version "2.0.20-Beta1"
     id("com.gradleup.shadow") version "9.0.0-beta8"
@@ -30,18 +32,18 @@ repositories {
 dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
     // Paper
-    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
 
     // Twilight
     implementation("gg.flyte:twilight:${twilightVersion}")
 
     // Command API
-    compileOnly("dev.jorel:commandapi-bukkit-core:${commandAPIVersion}")
-    implementation("dev.jorel:commandapi-bukkit-shade-mojang-mapped:${commandAPIVersion}")
-    implementation("dev.jorel:commandapi-bukkit-kotlin:${commandAPIVersion}")
+    compileOnly("dev.jorel:commandapi-paper-core:${commandAPIVersion}")
+    implementation("dev.jorel:commandapi-kotlin-paper:${commandAPIVersion}")
+    implementation("dev.jorel:commandapi-paper-shade:${commandAPIVersion}")
 }
 
 kotlin {
@@ -53,6 +55,9 @@ tasks.build {
 }
 
 tasks {
+    shadowJar {
+        relocate("dev.jorel.commandapi", "dev.xyzjesper.package.commandapi")
+    }
     runServer {
         minecraftVersion(mcVersion)
     }
