@@ -8,7 +8,9 @@ import dev.xyzjesper.simplemcutility.events.HappyGhastDismountEvent
 import dev.xyzjesper.simplemcutility.events.HappyGhastMountEvent
 import dev.xyzjesper.simplemcutility.events.PlayerInteractEvent
 import gg.flyte.twilight.twilight
+import org.bukkit.NamespacedKey
 import org.bukkit.entity.HappyGhast
+import org.bukkit.persistence.PersistentDataType
 import org.bukkit.plugin.java.JavaPlugin
 
 class SimpleMCUtility : JavaPlugin() {
@@ -51,4 +53,13 @@ class SimpleMCUtility : JavaPlugin() {
         logger.info("Plugin disabled!")
     }
 
+    val speedKey = NamespacedKey(this, "speed")
+    fun setSpeed(speed: Double, target: HappyGhast) {
+        if (target.persistentDataContainer.has(speedKey, PersistentDataType.DOUBLE)) {
+        } else {
+            target.persistentDataContainer.set(speedKey, PersistentDataType.DOUBLE, speed)
+        }
+        target.persistentDataContainer.set(speedKey, PersistentDataType.DOUBLE, speed)
+    }
+    
 }

@@ -14,7 +14,8 @@ object HappyGhastDismountEvent : Listener {
 
     @EventHandler
     fun onEntityDismountEvent(event: EntityDismountEvent) {
-        if (event.dismounted.type == EntityType.HAPPY_GHAST && event.entity.passengers.isEmpty()) {
+        val realSize = event.dismounted.passengers.size - 1
+        if (event.dismounted.type == EntityType.HAPPY_GHAST && realSize == 0) {
 
             SimpleMCUtility.instance.happyPassengers.remove(event.entity.entityId.toString())
 

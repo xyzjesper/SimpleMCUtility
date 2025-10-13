@@ -1,4 +1,2 @@
-# PaperTemplate
+# SimpleMCUtility
 
-
-Simple Template to create a Paper plugin in Minecraft with Kotlin.
