@@ -1,8 +1,8 @@
 # SimpleMCUtility
 
 ### Commands
-``/happyspeed`` - Set the Speed from 0.0 to 0.5.
-``happypassengers`` - Passengers Management for Owner for the Ghast
+- ``/happyspeed`` - Set the Speed from 0.0 to 0.5.
+- ``happypassengers`` - Passengers Management for Owner for the Ghast
 
 
 ## Features
