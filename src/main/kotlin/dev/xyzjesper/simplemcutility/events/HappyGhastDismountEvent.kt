@@ -20,7 +20,7 @@ object HappyGhastDismountEvent : Listener {
             SimpleMCUtility.instance.happyPassengers.remove(event.entity.entityId.toString())
 
             (event.dismounted as HappyGhast).getAttribute(Attribute.FLYING_SPEED)!!.baseValue = 0.05
-            event.entity.sendMessage(mm.deserialize("<gray>No Passengers left! Set base speed for your Happy Ghast</gray>"))
+            event.entity.sendActionBar(mm.deserialize("<gray>No Passengers left! Set base speed for your Happy Ghast</gray>"))
         }
     }
 

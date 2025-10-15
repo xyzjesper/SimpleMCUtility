@@ -2,11 +2,11 @@
 
 import dev.jorel.commandapi.CommandAPI
 import dev.jorel.commandapi.CommandAPIPaperConfig
-import dev.xyzjesper.simplemcutility.commands.HappyPassengers
-import dev.xyzjesper.simplemcutility.commands.HappySpeedCommand
+import dev.xyzjesper.simplemcutility.commands.Happy
 import dev.xyzjesper.simplemcutility.events.HappyGhastDismountEvent
 import dev.xyzjesper.simplemcutility.events.HappyGhastMountEvent
 import dev.xyzjesper.simplemcutility.events.PlayerInteractEvent
+import dev.xyzjesper.simplemcutility.events.PlayerInteractEvent.key
 import gg.flyte.twilight.twilight
 import org.bukkit.NamespacedKey
 import org.bukkit.entity.HappyGhast
@@ -36,9 +36,8 @@ class SimpleMCUtility : JavaPlugin() {
         CommandAPI.onEnable()
 
         val tw = twilight(this)
-        
-        HappySpeedCommand
-        HappyPassengers
+
+        Happy
         server.pluginManager.registerEvents(HappyGhastDismountEvent, this)
         server.pluginManager.registerEvents(PlayerInteractEvent, this)
         server.pluginManager.registerEvents(HappyGhastMountEvent, this)
@@ -60,6 +59,14 @@ class SimpleMCUtility : JavaPlugin() {
             target.persistentDataContainer.set(speedKey, PersistentDataType.DOUBLE, speed)
         }
         target.persistentDataContainer.set(speedKey, PersistentDataType.DOUBLE, speed)
+    }
+
+    fun setParked(isParked: Boolean, target: HappyGhast) {
+        if (target.persistentDataContainer.has(key, PersistentDataType.BOOLEAN)) {
+        } else {
+            target.persistentDataContainer.set(key, PersistentDataType.BOOLEAN, isParked)
+        }
+        target.persistentDataContainer.set(key, PersistentDataType.BOOLEAN, isParked)
     }
     
 }

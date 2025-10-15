@@ -21,9 +21,10 @@ object HappyGhastMountEvent : Listener {
                 (event.mount as HappyGhast).persistentDataContainer.get(
                     SimpleMCUtility.instance.speedKey, PersistentDataType.DOUBLE
                 ) ?: 0.05
-            
+
+            SimpleMCUtility.instance.setParked(false, event.mount as HappyGhast)
             SimpleMCUtility.instance.happyPassengers[event.entity.entityId.toString()] = event.mount.uniqueId.toString()
-            event.entity.sendMessage(mm.deserialize("<gray>You are now the owner of the Happy Ghast!</gray>\n<gray>Use /happypassengers to manage players</gray>"))
+            event.entity.sendActionBar(mm.deserialize("<gray>You are now the owner of the Happy Ghast!</gray>\n<gray>Use /happypassengers to manage players</gray>"))
         }
     }
 

@@ -29,21 +29,15 @@ object PlayerInteractEvent : Listener {
 
             if (target.persistentDataContainer.get(key, PersistentDataType.BOOLEAN) == true) {
                 flySpeed!!.baseValue = 0.05
-                setParked(false, target)
-                return event.player.sendMessage(mm.deserialize("<gray>Now your Happy Ghast can drive again!</gray>"))
+                SimpleMCUtility.instance.setParked(false, target)
+                return event.player.sendActionBar(mm.deserialize("<gray>Now your Happy Ghast can drive again!</gray>"))
             } else {
                 flySpeed!!.baseValue = 0.0
-                setParked(true, target)
-                return event.player.sendMessage(mm.deserialize("<color:#57ff45>The Happy Ghast has now been parked.</color>"))
+                SimpleMCUtility.instance.setParked(true, target)
+                return event.player.sendActionBar(mm.deserialize("<color:#57ff45>The Happy Ghast has now been parked.</color>"))
             }
         }
     }
 
-    fun setParked(isParked: Boolean, target: HappyGhast) {
-        if (target.persistentDataContainer.has(key, PersistentDataType.BOOLEAN)) {
-        } else {
-            target.persistentDataContainer.set(key, PersistentDataType.BOOLEAN, isParked)
-        }
-        target.persistentDataContainer.set(key, PersistentDataType.BOOLEAN, isParked)
-    }
+
 }
